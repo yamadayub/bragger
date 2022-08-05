@@ -1,0 +1,13 @@
+<p>Portfolio ID: <%= @portfolio.id %></p>
+<p>Portfolio YTD Growth: <%= @portfolio.ytd_return.round(4) * 100 %>%</p>
+
+<% @tickers.each do |ticker| %>
+  <ul>
+    <li>Ticker: <%= ticker.ticker %></li> 
+    <li>Ratio: <%= ticker.ratio.round(4) * 100 %>%</li>
+    <li>Latest Value: <%= @values.where(ticker: ticker.ticker).order(date: "ASC").last.value %> as of <%= @values.where(ticker: ticker.ticker).order(date: "ASC").last.date %></li>
+    <li>First Value: <%= @values.where(ticker: ticker.ticker).order(date: "ASC").first.value %> as of <%= @values.where(ticker: ticker.ticker).order(date: "ASC").first.date %></li>
+    <li>YTD Growth: <%= (@values.where(ticker: ticker.ticker).order(date: "ASC").last.value.quo(@values.where(ticker: ticker.ticker).order(date: "ASC").first.value).to_d - 1).round(4) * 100 %>%</li>
+  </ul>
+<% end %>
+

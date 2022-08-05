@@ -1,0 +1,31 @@
+<%= form_with model: @tickers, url: tickers_path, method: :post, local: true do |fb| %>
+  <table class="table">
+  <thead>
+    <tr>
+      <th width="60px">Register</th>
+      <th>Ticker</th>
+      <th>Ratio</th>
+    </tr>
+  </thead>
+  <tbody class="bulk-registration-form">
+    <%= fb.fields_for :tickers do |f| %>
+      <tr class="item">
+      <td class="text-center">
+      <%= f.check_box :register_flag, class: 'top10 registration-checkbox' %>
+      </td>
+      <td>
+      <%= f.text_field :ticker, class: 'form-control' %>
+      </td>
+      <td>
+      <%= f.text_field :ratio, class: 'form-control' %>
+      </td>
+      <%= f.hidden_field :portfolio_id, :value => 2 %>
+    </tr>
+    <% end %>
+  </tbody>
+  </table>
+  
+  <div class="text-center">
+    <%= fb.submit 'register', class: 'btn btn-primary' %>
+  </div>
+<% end %>

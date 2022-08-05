@@ -1,0 +1,36 @@
+<h1>Home#index</h1>
+<p>Find me in app/views/home/index.html.erb</p>
+
+<% if user_signed_in? %>
+  <%= current_user.email %>
+  <p>
+  <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+  </p>
+  
+  <% if @my_portfolio %>
+    <% @my_portfolio.each_with_index do |p,i| %>
+    <p>
+      <%= link_to "Portfolio #{i+1}", portfolio_path(:id => p.id) %>
+    </p>
+    <% end %>
+  <% end %>
+  
+<% else %>
+  <p>
+  <%= link_to "Create a new portfolio",   new_portfolio_path, :method => :get %>
+  </p>
+
+  <p>
+    <%= link_to "Sign In", new_user_session_path, :method => :get %>
+  </p>
+
+  <p>
+  <%= link_to "Sign Up", new_user_registration_path, :method => :get %>
+  </p>
+  
+<% end %>
+
+
+
+
+

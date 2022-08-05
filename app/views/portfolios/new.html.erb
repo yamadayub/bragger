@@ -1,0 +1,13 @@
+<%= form_with model: @portfolio do |f| %>
+
+  <!-- Guest User -->
+  <%= f.hidden_field :user_id, :value => 1 %>
+
+
+  <p class="form-group field">
+    <%= f.label :title, "Portfolio Title", class: "control-label" %>
+    <%= f.text_field :title, class: "form-control" %>
+
+  <%= f.submit " Create a new portfolio", class: "btn btn-primary" %>
+  </p>
+<% end %>
