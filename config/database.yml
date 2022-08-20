@@ -14,15 +14,16 @@ default: &default
 
 development:
   <<: *default
-  database: bestfolio_development
+  database: bragger_development
+  host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: bestfolio_test
+  database: bragger_test
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: bragger_production

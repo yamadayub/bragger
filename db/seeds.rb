@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require "csv"
+
+csv_list = ['db/Tickers_NYSE.csv','db/Tickers_NASDAQ.csv','db/Tickers_AMEX.csv']
+
+csv_list.each do |csv|
+    CSV.foreach(csv) do |row|
+      TickerSource.create(:ticker => row[1], :exchange => row [0], :name => row[2] )
+    end
+end

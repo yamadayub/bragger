@@ -1,0 +1,2 @@
+class TickerSource < ApplicationRecord
+end

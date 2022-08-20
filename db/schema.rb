@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_01_211832) do
+ActiveRecord::Schema.define(version: 2022_08_13_225653) do
 
   create_table "portfolios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.boolean "primary"
@@ -27,6 +27,14 @@ ActiveRecord::Schema.define(version: 2022_08_01_211832) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ticker"
+  end
+
+  create_table "ticker_sources", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "ticker"
+    t.string "exchange"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "tickers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
